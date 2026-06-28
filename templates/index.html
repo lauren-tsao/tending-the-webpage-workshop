@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+
+    
+    <div class="garden">
+        <!-- REPLACE ID WITH YOUR PLOT # -->
+        <div class="plot" id="REPLACE_ME" data-plot>
+
+            <!-- replace below content: text, images, etc. -->
+            <div class="flower-example">🌷</div>
+
+        </div>
+    </div>
+
+
+
+
+    <div id="toolbar">
+        <!-- YOUR TOOL WILL GO HERE-->
+        <button id="my-tool" draggable="true">
+
+            <span class="tool-icon">🌷</span>
+            <span class="tool-name">REPLACE_ME</span>
+
+        </button>
+    </div>
+
+
+
+    <!-- RENAME your_name.js WITH YOUR FILE NAME -->
+    <script type="module" src="your_name.js"></script>
+
+
+
+
+    <script>
+        function apply(plot) {
+
+          // your code here; only copy what's in here into your_name.js
+          plot.innerHTML += "<div class='flower-example'>🌷</div>" // <- REPLACE THIS WITH YOUR CODE
+
+        }
+
+        const plot = document.getElementById('REPLACE_ME'); // <- CHANGE TO YOUR PLOT # e.g. 'plot-2'
+
+
+
+
+
+        // DON'T TOUCH ANYTHING BELOW!
+        plot.addEventListener('dragover', e => e.preventDefault());
+        plot.addEventListener('drop', e => {
+          e.preventDefault();
+          apply(plot);
+        });
+
+        document.getElementById('my-tool').addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', 'tool');
+        });
+      </script>
+  </body>
+</html>
