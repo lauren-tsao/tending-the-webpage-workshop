@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="garden">
+      <!-- REPLACE ID WITH YOUR PLOT # -->
+      <div class="plot" id="plot-5" data-plot>
+        <!-- replace below content: text, images, etc. -->
+        <div class="flower-example" id="flower">🌼</div>
+        <div class="flower-example" id="flower">🌷</div>
+      </div>
+    </div>
+
+    <div id="toolbar">
+      <!-- YOUR TOOL WILL GO HERE-->
+      <button id="my-tool" draggable="true">
+        <span class="tool-icon">🐝</span>
+        <span class="tool-name">CROSS-POLLINATE</span>
+      </button>
+    </div>
+
+    <!-- RENAME your_name.js WITH YOUR FILE NAME -->
+    <script type="module" src="lauren.js"></script>
+
+    <script>
+      const flowers = ["🌻", "🌼", "🌷", "🌹"];
+
+      function apply(flower) {
+        const random = Math.floor(Math.random() * flowers.length);
+        console.log(random, flowers[random]);
+        flower.innerHTML = `${flowers[random]}`;
+      }
+
+      const plot = document.getElementById("plot-5");
+
+      // attach listeners to every flower inside the plot
+      const allFlowers = plot.querySelectorAll(".flower-example");
+
+      allFlowers.forEach((flower) => {
+        flower.addEventListener("dragover", (e) => e.preventDefault());
+        flower.addEventListener("drop", (e) => {
+          e.preventDefault();
+          apply(flower); // pass the specific flower that was dropped on
+        });
+      });
+
+      document.getElementById("my-tool").addEventListener("dragstart", (e) => {
+        e.dataTransfer.setData("text/plain", "tool");
+      });
+      document.getElementById("my-tool").addEventListener("dragstart", (e) => {
+        e.dataTransfer.setData("text/plain", "tool");
+      });
+    </script>
+  </body>
+</html>
